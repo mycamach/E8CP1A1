@@ -8,10 +8,12 @@ end
 new_file('Compras', 'Sábado')
 
 def add_list(array)
+  
   file = File.open('index.html', 'a')
   file.puts '<ol>'
   array.each { |ele| file.puts "<li> #{ele} </li>" }
   file.puts '</ol>'
+  return if array.count.zero?
   file.close
 end
 
@@ -19,5 +21,10 @@ compras = %w[Queso Jamón Pan]
 
 add_list(compras)
 
-#def p_with_color(string)
-#  file = File.open('index.html', 'r')
+def add_color(color)
+  file = File.open('index.html', 'r')
+  lines = file.readlines.map(&:chomp)
+  print lines
+end
+
+add_color('color')
